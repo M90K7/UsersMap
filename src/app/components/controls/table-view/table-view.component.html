@@ -1,0 +1,42 @@
+<ng-template #tplRawValue
+             let-item
+             let-column="column">
+    {{ getValue(column, item) }}
+</ng-template>
+<ng-template #tplComponentValue
+             let-item
+             let-column="column">
+    <ndc-dynamic [ndcDynamicComponent]="column.componentType"
+                 (ndcDynamicCreated)="componentCreated($event, column, item)">
+    </ndc-dynamic>
+</ng-template>
+
+<nz-table #table
+          [nzData]="data"
+          [nzLoading]="loading"
+          nzBordered
+          nzSize="small"
+          [nzScroll]="{ x: '1200px', y: '240px' }">
+    <thead>
+        <tr>
+            <th *ngFor="let column of $any(columns)"
+                [nzSortOrder]="column.sortOrder"
+                [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections"
+                [nzFilterMultiple]="column.filterMultiple"
+                [nzFilters]="column.listOfFilter"
+                [nzFilterFn]="column.filterFn">
+                {{ column.headerName }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of table.data">
+            <td *ngFor="let column of columns">
+                <ng-container [ngTemplateOutlet]="column.componentType ? tplComponentValue : tplRawValue"
+                              [ngTemplateOutletContext]="{ $implicit: item, column: column}">
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

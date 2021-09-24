@@ -1,0 +1,16 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  align-content: start;
+  align-items: start;
+  grid-template-areas:
+    "user-container";
+  width: 100%;
+  height: 100%;
+}
+
+.user-container { grid-area: user-container; }

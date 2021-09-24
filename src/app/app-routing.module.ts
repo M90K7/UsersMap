@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import * as cmp from "components";
+
+const routes: Routes = [
+  { path: "", component: cmp.UsersComponent, pathMatch: "full" },
+  { path: "**", redirectTo: "" } 
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
