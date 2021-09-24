@@ -1,13 +1,14 @@
-import { Component, ComponentRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ComponentRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 import { NzTableFilterValue, NzTableSortOrder } from "ng-zorro-antd/table";
 
 import { ColumnItem, TableViewCellRenderComponent } from "./table-view.model";
-
+    
 @Component({
   selector: 'app-table-view',
   templateUrl: './table-view.component.html',
-  styleUrls: ['./table-view.component.scss']
+  styleUrls: ['./table-view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableViewComponent implements OnInit, OnChanges {
 
@@ -20,6 +21,7 @@ export class TableViewComponent implements OnInit, OnChanges {
   @Input()
   loading = false;
 
+  /** [parentComponent] use to pass component-type column */
   @Input()
   parentComponent: any;
 

@@ -1,8 +1,11 @@
+<!-- View Simple Value -->
 <ng-template #tplRawValue
              let-item
              let-column="column">
     {{ getValue(column, item) }}
 </ng-template>
+
+<!-- View Component Type -->
 <ng-template #tplComponentValue
              let-item
              let-column="column">
@@ -11,12 +14,13 @@
     </ndc-dynamic>
 </ng-template>
 
+<!-- Main Table -->
 <nz-table #table
           [nzData]="data"
           [nzLoading]="loading"
           nzBordered
           nzSize="small"
-          [nzScroll]="{ x: '1200px', y: '240px' }">
+          [nzScroll]="{ x: '900px', y: '350px' }">
     <thead>
         <tr>
             <th *ngFor="let column of $any(columns)"

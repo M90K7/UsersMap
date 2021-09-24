@@ -21,3 +21,15 @@
     direction: ltr;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Resolve NzNotificationModule RTL UI*/
+.rtl-notification {
+    & .anticon.ant-notification-notice-icon {
+        right: 20px;
+    }
+
+    & .ant-notification-notice-close {
+        left: 10px;
+        right: auto;
+    }
+}

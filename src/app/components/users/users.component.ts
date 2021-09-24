@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NzModalService } from "ng-zorro-antd/modal";
+import { NzNotificationService } from "ng-zorro-antd/notification";
 
 import * as svc from "services";
 import * as models from "models";
@@ -70,8 +71,9 @@ export class UsersComponent implements OnInit, IUsersComponent {
 
   constructor(
     private nzModalSvc: NzModalService,
+    private nzNotificationSvc: NzNotificationService,
     private readonly userSvc: svc.UserService
-  ) { 
+  ) {
     this.that = this;
   }
 
@@ -82,14 +84,25 @@ export class UsersComponent implements OnInit, IUsersComponent {
       this.userItems = users;
     }, err => {
       this.loading = false;
+      this.nzNotificationSvc.create(
+        "error",
+        'خطا!',
+        'لیست کاربران قابل دریافت نمی باشد.<br/> لطفا مجدد سعی نمایید.',
+        {
+          nzPlacement: "bottomLeft",
+          nzDuration: 10000,
+          nzClass: "rtl-notification",
+        }
+      );
     });
+
   }
 
   openMapModal(column: ColumnItem, item: models.UserModel) {
     this.nzModalSvc.success({
       nzTitle: "موقعیت مکانی کاربر",
       nzCentered: true,
-      nzComponentParams: {user: item},
+      nzComponentParams: { user: item },
       nzContent: UserMapComponent,
       nzWidth: "75%"
     });

@@ -7,6 +7,7 @@ import { IUsersComponent } from "./users.model";
     selector: 'app-operation-user',
     template: `
 <button nz-button nzType="primary" nzSize="default" nzShape="round"
+    nz-tooltip nzTooltipTitle="نقشه"
     (click)="onViewMap()">
    <i nz-icon nzType="global" nzTheme="outline"></i>
 </button>`,

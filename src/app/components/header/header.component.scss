@@ -18,6 +18,12 @@
     grid-area: 1 / 3 / 2 / 4;
 }
 
+@media only screen and (max-width: 600px) {
+  .user-name , .user-email {
+      display: none;
+  }
+}
+
 .user-profile {
     display: grid;
     grid-template-columns: auto 1fr;
